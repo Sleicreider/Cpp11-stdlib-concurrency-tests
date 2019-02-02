@@ -16,16 +16,23 @@ public:
 	{
 		if (!std::filesystem::is_regular_file(file)) return false;
 
-		std::ifstream src(file, std::ios::binary);
-		std::string content{ std::istreambuf_iterator<char>(src), std::istreambuf_iterator<char>() };
+		//std::ifstream src(file);
+		//std::string content{ std::istreambuf_iterator<char>(src), std::istreambuf_iterator<char>() };
+		//std::stringstream ss(content);
+		//std::string word;
 
-		std::stringstream ss(content);
+		//Even simpler than above
+		std::ifstream src(file);
+		std::stringstream ss;
+		ss << src.rdbuf();
+
 		std::string word;
+
+		//Word scoped, seems great
 		while (ss >> word)
 		{
 			words_[word]++;
 		}
-
 
 		return true;
 	}
