@@ -8,14 +8,18 @@
 
 int main(int argc, char** argv)
 {
-	if (!argv[1])
+	if (argc <= 1)
 	{
 		std::cerr << "Requires one argument for a file to process" << std::endl;
 		return 1;
 	}
 
 	FileReader f;
-	if (!f.Process(argv[1])) return 1;
+
+	for (int i = 1; i < argc; i++)
+	{
+		if (!f.Process(argv[i]));
+	}
 
 	f.PrintResult();
 

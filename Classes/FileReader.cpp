@@ -1,4 +1,11 @@
 #include "FileReader.h"
+#include <algorithm>
+
+static void ClearQueue(std::queue<STask>& q)
+{
+	std::queue<STask> empty;
+	std::swap(q, empty);
+}
 
 void FileReader::WordCounter(const std::string& str)
 {
@@ -82,6 +89,9 @@ bool FileReader::Process(const char* file)
 	{
 		item.join();
 	}
+
+	ClearQueue(tasks_);
+	consumer_.clear();
 
 	return true;
 }

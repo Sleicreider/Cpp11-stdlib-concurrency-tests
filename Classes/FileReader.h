@@ -11,6 +11,12 @@
 #include <mutex>
 #include <thread>
 
+struct STask
+{
+	std::string line;
+	bool done_ = false;
+};
+
 /**
 *	Using mutex for simplicity.
 *	Thread could be put to sleep when waiting for tasks in a queue with an condition variable.
@@ -18,12 +24,6 @@
 */
 class FileReader
 {
-	struct STask
-	{
-		std::string line;
-		bool done_ = false;
-	};
-
 	using WordMap = std::unordered_map<std::string, int>;
 
 public:
