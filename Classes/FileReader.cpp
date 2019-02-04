@@ -99,7 +99,7 @@ bool FileReader::Process(const char* file)
 void FileReader::PrintResult()
 {
 	printf("%-15s %s\n", "Wort", "Anzahl");
-	for (auto[word, count] : words_)
+	for (auto& [word, count] : words_)
 	{
 		printf("%-15s %d\n", std::string(word).c_str(), count);
 	}
