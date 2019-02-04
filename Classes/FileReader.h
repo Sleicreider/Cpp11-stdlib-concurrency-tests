@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __FILEREADER__
+#define __FILEREADER__
 
 #include <filesystem>
 #include <iostream>
@@ -9,8 +10,6 @@
 #include <unordered_map>
 #include <mutex>
 #include <thread>
-
-
 
 /**
 *	Using mutex for simplicity.
@@ -57,3 +56,5 @@ private:
 	std::mutex q_mutex_;
 	std::mutex map_mutex_;
 };
+
+#endif // __FILEREADER__

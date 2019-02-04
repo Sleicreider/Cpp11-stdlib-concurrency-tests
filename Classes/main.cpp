@@ -1,6 +1,7 @@
 //Project uses C++17 and was build via CMake
 //Tested on Windows msvc
 //Also compiles for gcc & clang https://godbolt.org/z/cfmtpT
+//Doesn't compile on OSX since XCode still doesn't support <filesystem>, use boost::filesytem as alternative instead
 
 #include <iostream>
 #include "FileReader.h"
