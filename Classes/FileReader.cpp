@@ -27,9 +27,10 @@ void FileReader::Consume()
 	while (!task.done_)
 	{
 		{
-			std::lock_guard<std::mutex> lock(q_mutex_);
-			if (tasks_.empty())
-				continue; //since we don't work with condition variable simply continue
+			std::unique_lock<std::mutex> lock(q_mutex_);
+			while (tasks_.empty())
+				cond_.wait(lock);
+				//continue; //since we don't work with condition variable simply continue
 
 			task = tasks_.front();
 
@@ -53,10 +54,18 @@ void FileReader::Produce(const char* file)
 	std::string line;
 	while (std::getline(src, line))
 	{
+		//STask task;
+		//task.line = line;
+		//{
+		//	std::lock_guard<std::mutex> lock{ q_mutex_ };
+		//	tasks_.push(task);
+		//}
+
 		std::lock_guard<std::mutex> lock{ q_mutex_ };
 		STask task;
 		task.line = line;
 		tasks_.push(task);
+		cond_.notify_all();
 	}
 
 	//Add done to the list, so the consumer sees we are done
@@ -65,6 +74,7 @@ void FileReader::Produce(const char* file)
 		STask task;
 		task.done_ = true;
 		tasks_.push(task);
+		cond_.notify_all();
 	}
 }
 

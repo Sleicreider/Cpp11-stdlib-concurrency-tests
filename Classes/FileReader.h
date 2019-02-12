@@ -52,6 +52,7 @@ private:
 	WordMap words_;
 	std::vector<std::thread> consumer_;
 	std::queue<STask> tasks_;
+	std::condition_variable cond_;
 
 	std::mutex q_mutex_;
 	std::mutex map_mutex_;
