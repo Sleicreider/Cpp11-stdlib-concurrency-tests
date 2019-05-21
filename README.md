@@ -2,6 +2,8 @@
 Playing around with standard libary threads and atomics, including memory ordering.
 
 Mainly used for me to understand standard low level atomics, instead of custom solutions.
+I've never professionally had to use them, even when working on / with gameengines so far, therefore I'm trying to 
+get more handson knowledge about it besides the main well known public talks.
 
 Just playing around with C++ <thread <atomics> stuff.
 Couldn't come up with an example, therefore took one of an C++ Interview, where you have to read a file 
