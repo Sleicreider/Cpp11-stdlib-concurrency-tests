@@ -1,4 +1,4 @@
-# C++11 stdlib thread/atomics tests
+# C++11 stdlib concurrency tests
 Playing around with standard libary threads and atomics, including memory ordering.
 
 Mainly used for me to understand standard low level atomics, instead of custom solutions.
