@@ -1,7 +1,9 @@
-# InTest1
-C++ Testing stuff
+# C++11 stdlib tests
+Playing around with standard libary threads and atomics, including memory ordering.
 
-Just playing around with C++ <thread> stuff.
+Mainly used for me to understand standard low level atomics, instead of custom solutions.
+
+Just playing around with C++ <thread <atomics> stuff.
 Couldn't come up with an example, therefore took one of an C++ Interview, where you have to read a file 
 and parallel count how often a word exists in the whole file.
 
