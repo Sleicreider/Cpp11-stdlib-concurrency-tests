@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <queue>
+#include <condition_variable>
 
 #include <unordered_map>
 #include <mutex>
